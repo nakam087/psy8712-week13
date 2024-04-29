@@ -9,7 +9,7 @@ conn <- dbConnect(MariaDB(), #opening connection
                   password=key_get("latis-mysql", "nakam087"),
                   host="mysql-prod5.oit.umn.edu",
                   port=3306,
-                  ssl.ca='mysql_hotel_umn_20220728_interm.cer')
+                  ssl.ca='mysql_hotel_umn_20220728_interm.cer') #I put mine in the R folder so it would run 
 
 show_data<- dbGetQuery(conn, "SHOW DATABASES;") #what databases
 cla<-dbExecute(conn, "USE cla_tntlab;")
@@ -24,7 +24,7 @@ q1<-dbGetQuery(conn,
 q1
 #number of unique managers
 q2<-dbGetQuery(conn, 
-               "SELECT COUNT(DISTINCT e.employee_id)
+               "SELECT COUNT(DISTINCT x.employee_id)
                FROM datascience_employees x
                RIGHT JOIN datascience_testscores y
                ON x.employee_id = y.employee_id;")

@@ -10,15 +10,15 @@ conn <- dbConnect(MariaDB(), #opening connection
                   password=key_get("latis-mysql", "nakam087"),
                   host="mysql-prod5.oit.umn.edu",
                   port=3306,
-                  ssl.ca='mysql_hotel_umn_20220728_interm.cer')
+                  ssl.ca='mysql_hotel_umn_20220728_interm.cer') #I put mine in the R folder so it would run 
 
 show_data<- dbGetQuery(conn, "SHOW DATABASES;") #what databases
 cla<-dbExecute(conn, "USE cla_tntlab;")
-get_tables<-dbGetQuery(conn, "SHOW TABLES") #what tables in cla tnt lab
+get_tables<-dbGetQuery(conn, "SHOW TABLES;") #what tables in cla tnt lab
 #selecting specific tables we want
-employee<-dbGetQuery(conn, "SELECT * FROM datascience_employees") 
-office<-dbGetQuery(conn, "SELECT * FROM datascience_offices")
-testscore<-dbGetQuery(conn, "SELECT * FROM datascience_testscores")
+employee<-dbGetQuery(conn, "SELECT * FROM datascience_employees;") 
+office<-dbGetQuery(conn, "SELECT * FROM datascience_offices;")
+testscore<-dbGetQuery(conn, "SELECT * FROM datascience_testscores;")
 #creating tibbles
 employees_tbl<-tibble(employee)
 testscores_tbl<-tibble(testscore)
